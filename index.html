@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CMU Theses Semantic Map</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFF7;
+            color: rgb(50, 50, 50);
+            width: 100%;
+            min-width: 1600px;
+        }
+
+        /* Header styling */
+        .header {
+            background-color: #FFFFF7;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .logo {
+            height: 200px;
+            width: auto;
+        }
+
+        /* Banner section styling */
+        .banner-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            background-color: #FFFFF7;
+        }
+
+        .banner-logo {
+            max-height: 250px;
+            width: auto;
+        }
+
+        /* Headline styling */
+        .headline {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: rgb(50, 50, 50);
+            background-color: #FFFFF7;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Plot container */
+        .plot-container {
+            width: 1601px;
+            height: 1200px;
+            margin: 1rem auto;
+            background-color: #FFFFF7;
+        }
+
+        .plot-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden;
+            background-color: #FFFFF7;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Description box styling */
+        .description-box {
+            background-color: #FFFFF7;
+            margin: 1rem auto;
+            padding: 2rem;
+            width: 1600px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        /* Markdown styling */
+        .prose {
+            max-width: none;
+            color: rgb(50, 50, 50);
+        }
+
+        .prose h1 {
+            font-size: 2.5em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        .prose h2 {
+            font-size: 1.8em;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        .prose h3 {
+            font-size: 1.4em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        .prose p {
+            margin-bottom: 1em;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .prose ul {
+            margin-left: 1.5em;
+            margin-bottom: 1em;
+            list-style-type: disc;
+        }
+
+        .prose li {
+            margin-bottom: 0.5em;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .prose em {
+            font-style: italic;
+        }
+
+        .prose strong {
+            font-weight: bold;
+        }
+
+        .prose hr {
+            margin: 2em 0;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .prose code {
+            background-color: #f5f5f5;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .prose a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .prose a:hover {
+            text-decoration: underline;
+        }
+
+        /* responsive design */
+        @media (min-width: 1601px) {
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header {
+                width: 1600px;
+            }
+
+            .banner-section {
+                width: 1600px;
+            }
+
+            .headline {
+                width: 1600px;
+            }
+        }
+
+        @media (max-width: 1600px) {
+            body {
+                overflow-x: auto;
+            }
+        }
+    </style>
+    <!-- Load dependencies in the correct order -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+</head>
+
+<body>
+    <!-- Header with logos -->
+    <div class="header">
+        <img src="img/CMU_Libraries_logo.png" alt="CMU Libraries" class="logo">
+        <img src="img/TRDA_logo.png" alt="TRDA" class="logo">
+    </div>
+
+    <div class="banner-section">
+        <img src="img/LDW_logo.png" alt="Banner Logo" class="banner-logo">
+    </div>
+
+    <!-- Added headline -->
+    <div class="headline">
+        Leveraging AI technology for knowledge exploration and discovery
+    </div>
+
+    <!-- Plot container -->
+    <div class="plot-container">
+        <iframe src="web_viz.html" scrolling="no"></iframe>
+    </div>
+
+    <div class="description-box">
+        <div id="description-content" class="prose max-w-none"></div>
+    </div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Replace the existing script section -->
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        const markdownContent = `
+# Explore the Universe of Graduate Research at CMU! 🚀
+## Introducing the KiltHub Thesis Explorer 🔭
+Ever wondered how your research connects to work across different departments? Curious about unexplored areas in your field? We're excited to introduce a new interactive visualization tool that maps the entire landscape of graduate research at CMU!
+
+## What You'll See 👀
+Imagine a star map, but instead of stars, you're looking at every graduate thesis in KiltHub. Each point represents a thesis, and the space between them shows how related their topics are – the closer together, the more similar their research themes. This creates a fascinating "galaxy" of CMU graduate research where you can:
+- Discover unexpected connections between different fields  
+- Find potential collaborators across departments  
+- Identify unique research opportunities  
+- Explore the evolution of research themes across colleges
+
+## How to Explore 🔍
+### Interactive Features  
+- ***Zoom:*** Like Google Maps, but for research! Zoom in to explore specific research clusters or out to see the big picture  
+- ***Hover:*** Mouse over any point to see thesis details, including:  
+  - Title  
+  - College  
+  - Research topics  
+- ***Filter:*** Click on college names to show or hide different departments 
+
+### Research Insights ⚛️  
+- Find clusters of related work across different colleges  
+- Spot gaps between fields that might inspire new research directions  
+- Identify potential interdisciplinary collaboration opportunities  
+- See how your research interests connect to other fields
+
+## Behind the Scenes 🛠️
+This visualization was created using state-of-the-art natural language processing techniques that transform thesis abstracts into a semantic map. Think of it as a GPS system for research topics – it captures the *semantic* meaning of the research, not just keywords, allowing it to show conceptual relationships between different works.
+
+### Technical Details  
+**Feature Extraction**: Count vectorizer followed by Class-based TF-IDF transformation  
+**Embedding Model**: \`paraphrase-MiniLM-L6-v2\` from [sentence-transformers](https://huggingface.co/sentence-transformers) to generate 384-dimensional embeddings of thesis descriptions  
+**Clustering Method**: [HDBSCAN](https://hdbscan.readthedocs.io/en/latest/index.html) to assign points to clusters in the embedding space  
+**Dimensionality Reduction**: We used [UMAP](https://umap-learn.readthedocs.io/en/latest/) to reduce from 384 to 2 dimensions for visualization purposes
+
+### Acknowledgements
+We used [BERTopic](https://maartengr.github.io/BERTopic/) to develop the workflow for this project.
+
+---------------
+*This project is a collaboration between the University Libraries and the Tartan Research Data Alliance. Built with love for the Love Data Week 2025 and the CMU community.*
+
+TRDA members: Chehak Arora and Alfredo González-Espinoza`;
+
+        // Configure marked
+        marked.setOptions({
+            breaks: true,
+            gfm: true
+        });
+
+        try {
+            // Parse markdown and insert into DOM
+            const parsedContent = marked.parse(markdownContent);
+            document.getElementById('description-content').innerHTML = parsedContent;
+        } catch (error) {
+            console.error('Error parsing markdown:', error);
+            document.getElementById('description-content').innerHTML = 'Error loading content';
+        }
+    });
+</script>
+
+    <!-- MathJax for any mathematical notation 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    -->
+</body>
+
+</html>
